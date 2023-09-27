@@ -32,8 +32,8 @@ public class ProtectedController {
 
     @GetMapping("/holiday/year/{year}")
     public Map<String, Object> getHoliday(@PathVariable String year) throws InterruptedException {
-        // 休眠500毫秒
-        Thread.sleep(500);
+        // 休眠0-200毫秒
+        Thread.sleep((long) (Math.random() * 201));
 
 
         Map<String, Object> response = new HashMap<>();
@@ -46,8 +46,8 @@ public class ProtectedController {
 
     @GetMapping("/weather/{location}")
     public Map<String, Object> getWeather(@PathVariable String location) throws IOException, InterruptedException {
-        // 休眠500毫秒
-        Thread.sleep(500);
+        // 休眠0-200毫秒
+        Thread.sleep((long) (Math.random() * 201));
         ClassPathResource resource = new ClassPathResource("templates/weather.json");
         InputStream inputStream = resource.getInputStream();
         String jsonData = StreamUtils.copyToString(inputStream, StandardCharsets.UTF_8);
