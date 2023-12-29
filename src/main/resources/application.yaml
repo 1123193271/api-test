@@ -5,12 +5,16 @@ server:
       max: 800
 
 jwt:
-  secret: MySecretKey123  # ?????JWT??
-  expiration: 1800000         # ?????????????????????????????
+  secret: MySecretKey123
+  expiration: 1800000
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/mydb
+    url: jdbc:mysql://192.168.194.133:3306/mydb
     username: root
-    password: 123456
+    password: 991103Lxy..
+
+#jasypt:
+#  encryptor:
+#    password: 123456
 

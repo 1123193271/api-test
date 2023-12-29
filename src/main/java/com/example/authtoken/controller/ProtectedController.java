@@ -1,5 +1,6 @@
 package com.example.authtoken.controller;
 
+import com.example.authtoken.context.UserContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
@@ -69,4 +70,10 @@ public class ProtectedController {
         holiday.put("rest", rest);
         return holiday;
     }
+
+    @GetMapping("/getUsername")
+    public ResponseEntity<String> getUsername() {
+        return ResponseEntity.ok("This is a name by ThreadLocal ------" + UserContext.getUser());
+    }
+
 }

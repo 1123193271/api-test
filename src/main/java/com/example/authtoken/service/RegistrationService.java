@@ -1,5 +1,6 @@
 package com.example.authtoken.service;
 
+import com.example.authtoken.Lang.TokenApiException;
 import com.example.authtoken.entity.User;
 import com.example.authtoken.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class RegistrationService {
     public User registerUser(User user) {
         // 检查用户名是否已存在
         if (userRepository.findByUsername(user.getUsername()) != null) {
-            throw new RuntimeException("Username already exists.");
+            throw new TokenApiException("Username already exists.");
         }
 
         // 对密码进行哈希加密
