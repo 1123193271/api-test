@@ -1,5 +1,7 @@
 package com.example.authtoken.controller;
 
+import cn.hutool.core.date.ChineseDate;
+import cn.hutool.core.date.DateUnit;
 import com.example.authtoken.context.UserContext;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.core.io.ClassPathResource;
@@ -74,6 +76,22 @@ public class ProtectedController {
     @GetMapping("/getUsername")
     public ResponseEntity<String> getUsername() {
         return ResponseEntity.ok("This is a name by ThreadLocal ------" + UserContext.getUser());
+    }
+
+    @GetMapping("/lunarDateDemo")
+    public ResponseEntity<String> LunarDateDemo () {
+        Date date = new Date();
+        ChineseDate chineseDate = new ChineseDate(date);
+
+        // 定义自定义的日期格式
+        String customFormat = "yyyy年MM月dd日 HH点mm分ss秒";
+
+        // 创建 SimpleDateFormat 对象，传入自定义的日期格式
+        SimpleDateFormat sdf = new SimpleDateFormat(customFormat);
+
+        // 使用 SimpleDateFormat 格式化 Date 对象
+        String formattedDate = sdf.format(date);
+        return ResponseEntity.ok("当前公历日期:" + formattedDate+"\n当前农历日期:"+ chineseDate);
     }
 
 }
